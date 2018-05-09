@@ -21,8 +21,7 @@ The demo runs on reasonably new Chrome, Safari and Firefox (not on Edge nor IE).
 It supposed to run on Mobile Safari and Android Chrome,
 but there are issues to be fixed.
 
-You can try it out
-[here](https://s3-ap-northeast-1.amazonaws.com/hideya-public/marulabo/mobilenet-webcam/index.html)
+You can try it out at: https://tfjs-mobilenet-webcam.netlify.com/
 
 ![Screenshot](https://i.imgur.com/bAglYvd.png)
 
