@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>WebCam ImageNet Recognition</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="./marulabo-icon.png">
+    <style>
+      body {margin: 20px; text-align: center; font-family: sans-serif;}
+      #webcam-frame {width: 224px; height: 224px; overflow: hidden; margin: 0 auto 20px auto;}
+      #webcam {margin-left: -37px; background: gray;}
+      .flip-horizontally {transform: rotateY(180deg);}
+      button {font-size: 12pt; padding: 10px 30px 10px 30px; border-radius: 40px; color: white; background: blue;}
+      button:active {background: gray;}
+      button:focus {outline: none;}
+      #result {margin: 20px; line-height: 2; font-weight: bold;}
+      .blinking {animation: blinker 1s infinite;}
+      @keyframes blinker {0% {opacity: 0.5;} 100% {opacity: 1;}}
+    </style>
+    <script src="./bundle.js" charset="utf-8"></script>
+  </head>
+  <body>
+    <h1>WebCam ImageNet Recognition</h1>
+    <div>
+      <div id="webcam-frame">
+        <video id="webcam" width="298px" height="224px" autoplay playsinline muted></video>
+      </div>
+      <button id="guess-button" class="blinking">Initializing...</button>
+      <div id="result"></div>
+    </div>
+  </body>
+</html>

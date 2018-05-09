@@ -1,0 +1,11 @@
+node_modules/
+public/bundle.js
+
+.DS_Store
+.cache/
+
+*.swp
+*.tar
+*.gz
+*.zip
+*.log
