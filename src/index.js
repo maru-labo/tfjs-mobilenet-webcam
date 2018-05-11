@@ -16,6 +16,7 @@ const INPUT_NODE_NAME = 'input';
 const OUTPUT_NODE_NAME = 'MobilenetV1/Predictions/Reshape_1';
 
 window.onload = async () => {
+  console.log("tfjs-core version:", tf.version_core);
 
   const model = await loadFrozenModel(
       MODEL_PATH_PREFIX + MODEL_FILENAME,
@@ -39,7 +40,7 @@ window.onload = async () => {
   }
 
   // Warm up the model. This uploads weights to the GPU and compiles the WebGL
-  // programs so the subsequent model executions will be quick.
+  // programs so the subsequent execution will be quick.
   tf.tidy(() => {
     const input = webcam.capture();
     model.execute({[INPUT_NODE_NAME]: input}, OUTPUT_NODE_NAME);
