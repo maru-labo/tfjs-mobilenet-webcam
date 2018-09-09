@@ -2,7 +2,7 @@
 // ref: https://github.com/tensorflow/tfjs-converter/blob/master/demo/mobilenet/mobilenet.js
 // ref: https://github.com/tensorflow/tfjs-examples/blob/master/webcam-transfer-learning/index.js
 
-import * as tf from '@tensorflow/tfjs';
+import * as tf from '@tensorflow/tfjs-core';
 import {loadFrozenModel} from '@tensorflow/tfjs-converter';
 
 import {IMAGENET_CLASSES} from './imagenet_classes';

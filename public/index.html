@@ -7,6 +7,7 @@
     <link rel="icon" type="image/png" href="./marulabo-icon.png">
     <style>
       body {margin: 20px; text-align: center; font-family: sans-serif;}
+      #webcam-frame {width: 224px; height: 224px; overflow: hidden; margin: 0 auto 20px auto;}
       #webcam {margin-left: -37px; background: gray;}
       .flip-horizontally {transform: rotateY(180deg);}
       button {font-size: 12pt; padding: 10px 30px 10px 30px; border-radius: 40px; color: white; background: blue;}
@@ -22,7 +23,7 @@
     <h1>WebCam ImageNet Recognition</h1>
     <div>
       <div id="webcam-frame">
-        <video id="webcam" width="224" height="224" autoplay playsinline muted></video>
+        <video id="webcam" width="224px" height="224px" autoplay playsinline muted></video>
       </div>
       <button id="guess-button" class="blinking">Initializing...</button>
       <div id="result"></div>
