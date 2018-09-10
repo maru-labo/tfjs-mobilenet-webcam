@@ -1,4 +1,3 @@
-// based on: https://github.com/hideya/tfjs-examples/blob/master/webcam-transfer-learning/webcam.js
 /**
  * @license
  * Copyright 2018 Google LLC. All Rights Reserved.
@@ -35,17 +34,7 @@ export class Webcam {
   capture() {
     return tf.tidy(() => {
       // Reads the image as a Tensor from the webcam <video> element.
-      // hideya: Somehow the following line resulted in
-      // 'Uncaught TypeError: Cannot read property 'drawImage' of null'
-      // at backend_webgl.js:132
-      //   const webcamImage = tf.fromPixels(this.webcamElement);
-      // So, a canvas and a context 2d are created manually here.
-      const canvas = document.createElement('canvas');
-      canvas.width = this.webcamElement.width;
-      canvas.height = this.webcamElement.height;
-      canvas.getContext('2d').drawImage(this.webcamElement,
-          0, 0, this.webcamElement.width, this.webcamElement.height);
-      const webcamImage = tf.fromPixels(canvas);
+      const webcamImage = tf.fromPixels(this.webcamElement);
 
       // Crop the image so we're using the center square of the rectangular
       // webcam.
@@ -88,15 +77,30 @@ export class Webcam {
     }
   }
 
-  async setup(constraints) {
-    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-      const stream = await navigator.mediaDevices.getUserMedia(constraints);
-      this.webcamElement.srcObject = stream;
-      this.webcamElement.addEventListener('loadeddata', () => {
-        this.adjustVideoSize(
-            this.webcamElement.videoWidth,
-            this.webcamElement.videoHeight);
-      }, false);
-    }
+  async setup() {
+    return new Promise((resolve, reject) => {
+      const navigatorAny = navigator;
+      navigator.getUserMedia = navigator.getUserMedia ||
+          navigatorAny.webkitGetUserMedia || navigatorAny.mozGetUserMedia ||
+          navigatorAny.msGetUserMedia;
+      if (navigator.getUserMedia) {
+        navigator.getUserMedia(
+            {video: true},
+            stream => {
+              this.webcamElement.srcObject = stream;
+              this.webcamElement.addEventListener('loadeddata', async () => {
+                this.adjustVideoSize(
+                    this.webcamElement.videoWidth,
+                    this.webcamElement.videoHeight);
+                resolve();
+              }, false);
+            },
+            error => {
+              reject();
+            });
+      } else {
+        reject();
+      }
+    });
   }
 }
