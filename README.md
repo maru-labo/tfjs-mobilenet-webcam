@@ -22,7 +22,8 @@ which is hosted at Google Cloud Storage
 
 The demo runs on reasonably new Chrome, Safari and Firefox (not on Edge nor IE).
 It runs on Mobile Safari and Android Chrome with good amount of device's
-GPU memory (i.e. Galaxy S7 and Pixel 2 XL).
+GPU memory (i.e. iPhone 6 and later, Galaxy S7, Pixel 2 XL, etc.).
+It can take very long time to startup as the pre-trained model is quite large.
 It fails recognition when seemingly an out-of-GPU-memory situation
 (see Issues [#2](https://github.com/maru-labo/tfjs-mobilenet-webcam/issues/2)
 and [#3](https://github.com/maru-labo/tfjs-mobilenet-webcam/issues/3)).
