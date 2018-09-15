@@ -21,8 +21,9 @@ which is hosted at Google Cloud Storage
 [here](https://storage.googleapis.com/tfjs-models/savedmodel/mobilenet_v1_1.0_224/weights_manifest.json)).
 
 The demo runs on reasonably new Chrome, Safari and Firefox (not on Edge nor IE).
-It supposed to run on Mobile Safari and Android Chrome,
-but there are issues to be fixed
+It runs on Mobile Safari and Android Chrome with good amount of device's
+GPU memory (i.e. Galaxy S7 and Pixel 2 XL).
+It fails recognition when seemingly an out-of-GPU-memory situation
 (see Issues [#2](https://github.com/maru-labo/tfjs-mobilenet-webcam/issues/2)
 and [#3](https://github.com/maru-labo/tfjs-mobilenet-webcam/issues/3)).
 
@@ -51,7 +52,7 @@ usual everyday items.
 It may be a bit hard to find many recognizable things around you.
 Things like 'cellphone', 'water bottle' and 'remote control' usually work well.
 
-### Related Repo
+### Related Repos
 
 If you are interested in knowing how to train NN, check out
 [maru-labo/doodle](https://github.com/maru-labo/doodle).<br/>
