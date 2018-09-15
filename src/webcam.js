@@ -77,7 +77,7 @@ export class Webcam {
     }
   }
 
-  async setup() {
+  async setup(constraints) {
     return new Promise((resolve, reject) => {
       const navigatorAny = navigator;
       navigator.getUserMedia = navigator.getUserMedia ||
@@ -85,7 +85,7 @@ export class Webcam {
           navigatorAny.msGetUserMedia;
       if (navigator.getUserMedia) {
         navigator.getUserMedia(
-            {video: true},
+            constraints,
             stream => {
               this.webcamElement.srcObject = stream;
               this.webcamElement.addEventListener('loadeddata', async () => {
